@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {DigitransitService} from "../services/digitransit.service";
 
 @Component({
   selector: 'app-routes',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RoutesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private digitransitService: DigitransitService) { }
+
+  private pysakit: any = [];
 
   ngOnInit() {
+    this.digitransitService.getRoutes('E1013')
+      .subscribe(
+        (res) => {
+          console.log(res.data.stops[0].patterns);
+          this.pysakit = res.data.stops[0].patterns;
+        }
+      );
   }
 
 }

@@ -8,6 +8,7 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { SetupComponent } from './setup/setup.component';
 import { RoutesComponent } from './routes/routes.component';
 import {RouterModule} from "@angular/router";
+import {DigitransitService} from "./services/digitransit.service";
 
 const routeConfig = [
   {
@@ -40,7 +41,7 @@ const routeConfig = [
     HttpModule,
     RouterModule.forRoot(routeConfig)
   ],
-  providers: [],
+  providers: [DigitransitService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
