@@ -4,15 +4,41 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { TopBarComponent } from './top-bar/top-bar.component';
+import { SetupComponent } from './setup/setup.component';
+import { RoutesComponent } from './routes/routes.component';
+import {RouterModule} from "@angular/router";
+
+const routeConfig = [
+  {
+    path: 'setup',
+    component: SetupComponent
+  },
+
+  {
+    path: 'routes',
+    component: RoutesComponent
+  },
+
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'setup',
+  }
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TopBarComponent,
+    SetupComponent,
+    RoutesComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot(routeConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
